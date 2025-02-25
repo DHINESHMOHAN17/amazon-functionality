@@ -1,4 +1,5 @@
 renderCheckout();
+updateCartQuantityPage();
 function renderCheckout() {
   let checkoutHTML = "";
   cart.forEach((cartItem) => {
@@ -105,3 +106,11 @@ document.querySelectorAll(".js-delete-link").forEach((button)=>{
         document.querySelector(`.cart-item-container-${productId}`).remove();
     });
 });
+
+function updateCartQuantityPage() {
+    let totalQuantity = 0;
+    cart.forEach((product) => {
+      totalQuantity += product.quantity;
+    });
+    document.querySelector(".js-return-to-home-link").innerHTML = totalQuantity+" items";
+  }

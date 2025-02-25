@@ -1,7 +1,7 @@
 // import {cart} from "../data/cart";
 // import {products} from "../data/products";
+updateCartQuantity();
 let productHTML = "";
-// cart=JSON.parse(localStorage.getItem('cart'))||[];
 products.forEach((product) => {
   productHTML += `<div class="product-container">
           <div class="product-image-container">
