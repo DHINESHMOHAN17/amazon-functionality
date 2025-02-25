@@ -101,6 +101,7 @@ document.querySelectorAll(".js-delete-link").forEach((button)=>{
             }
         });
         cart=newArray;
+        localStorage.setItem('cart',JSON.stringify(cart));
         document.querySelector(`.cart-item-container-${productId}`).remove();
     });
 });

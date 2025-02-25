@@ -77,7 +77,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
         quantity,
       });
     }
-    // localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart));
     updateCartQuantity();
     let addElement = document.querySelector(
       `.js-added-to-cart-${productId}`
