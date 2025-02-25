@@ -97,6 +97,6 @@ function updateCartQuantity() {
   cart.forEach((product) => {
     totalQuantity += product.quantity;
   });
-  if(totalQuantity===0) totalQuantity=""; 
+  if(totalQuantity===0) totalQuantity="";  
     document.querySelector(".js-cart-quantity").innerHTML = totalQuantity; 
 }
