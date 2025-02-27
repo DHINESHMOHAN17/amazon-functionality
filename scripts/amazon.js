@@ -75,6 +75,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
       cart.push({
         productId,
         quantity,
+        deliveryOptionId: '1'
       });
     }
     localStorage.setItem('cart', JSON.stringify(cart));

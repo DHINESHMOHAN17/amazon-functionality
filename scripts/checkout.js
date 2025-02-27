@@ -136,13 +136,13 @@ function handleUpdateQuantity(productId, quantityInput) {
   container.classList.remove("is-editing-quantity");
 }
 
-function updateNewCartQuantity(newQuantity, productId) {
+function updateNewCartQuantity(productId, newQuantity) {
   cart.forEach((cartItem) => {
     if (cartItem.productId === productId) {
       cartItem.quantity = newQuantity;
     }
   });
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 function deliveryOptionHTML(productId, deliveryOptionId) {
   let deliveryHTML = "";
@@ -156,7 +156,7 @@ function deliveryOptionHTML(productId, deliveryOptionId) {
         : `$${(delivery.priceCents / 100).toFixed(2)} -`;
     const isChecked = deliveryOptionId === delivery.id;
     deliveryHTML += `
-    <div class="delivery-option">
+    <div class="delivery-option js-delivery-option" data-product-id="${productId}" data-delivery-option-id="${delivery.id}">
         <input type="radio"
         ${isChecked ? " checked" : ""}
         class="delivery-option-input" name="delivery-option-${productId}">
@@ -172,3 +172,22 @@ function deliveryOptionHTML(productId, deliveryOptionId) {
   });
   return deliveryHTML;
 }
+
+
+function updateDeliveryOption(productId,deliveryOptionId){
+  let matchingItem;
+  cart.forEach((cartItem) => {
+    if(productId===cartItem.productId)        
+      matchingItem=cartItem;
+  });
+  
+  matchingItem.deliveryOptionId=deliveryOptionId;
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+document.querySelectorAll(".js-delivery-option").forEach((element)=>{
+  element.addEventListener("click",()=>{
+    const {productId,deliveryOptionId}=element.dataset;
+    updateDeliveryOption(productId,deliveryOptionId);
+  });
+});
